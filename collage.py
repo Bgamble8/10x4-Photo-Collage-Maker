@@ -6,10 +6,10 @@ import os
 
 def script(color):
 
-    path = "C:\\Users\\bryan\\Documents\\Python_Envs\\Etsy_Upload_Bot\\Products\\raw\\" + color
+    path = "C:\\Users\\yourname\\Documents\\" + color
 
     try:
-        os.mkdir("C:\\Users\\bryan\\Documents\\Python_Envs\\Etsy_Upload_Bot\\Products\\resized\\" + color)
+        os.mkdir("C:\\Users\\yourname\\Documents\\resized\\" + color)
     except FileExistsError:
         print("Folder exisits")
 
@@ -41,14 +41,7 @@ def script(color):
         h_stack4 = np.hstack(row4)
 
         v = np.vstack([h_stack1,h_stack2,h_stack3,h_stack4])
-        cv2.imwrite("C:\\Users\\bryan\\Documents\\Python_Envs\\Etsy_Upload_Bot\\Products\\temp\\thumb.png",v)
-
-        background = Image.open('C:\\Users\\bryan\\Documents\\Python_Envs\\Etsy_Upload_Bot\\Products\\temp\\thumb.png')
-        overlay = Image.open('C:\\Users\\bryan\\Documents\\Python_Envs\\Etsy_Upload_Bot\\images\\overlay.png')
-
-        background.paste(overlay, (0, 0), overlay)
-
-        background.save("C:\\Users\\bryan\\Documents\\Python_Envs\\Etsy_Upload_Bot\\Products\\thumbnails\\"+color+".png")
+        cv2.imwrite("Final-Image",v)
 
     def resize(path):
         files = loadImages(path)
@@ -56,7 +49,7 @@ def script(color):
         for file in files:
             img = cv2.imread(file, cv2.IMREAD_UNCHANGED)
             imgResized = cv2.resize(img,(1200,1800))
-            cv2.imwrite(("C:\\Users\\bryan\\Documents\\Python_Envs\\Etsy_Upload_Bot\\Products\\resized\\" +color+ "\\cropped%i.png" %i) ,imgResized)
+            cv2.imwrite(("C:\\Users\\bryan\\Documents\\resized\\" +color+ "\\cropped%i.png" %i) ,imgResized)
             i += 1
 
 
